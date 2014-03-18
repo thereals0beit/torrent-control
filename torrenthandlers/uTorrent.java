@@ -19,6 +19,8 @@ import org.jsoup.Connection.Response;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import torrenthandlers.BaseTorrentHandler.TorrentFile;
+
 import com.squareup.okhttp.internal.Base64;
 
 public class uTorrent extends BaseTorrentHandler {
@@ -124,6 +126,7 @@ public class uTorrent extends BaseTorrentHandler {
 				f.name = new String(tmpnameb, "UTF-8");
 				f.status = torrent.getString(constants.getInt(constantTag("TORRENT", "STATUS_MESSAGE")));
 				f.savepath = new String(tmppathb, "UTF-8");
+				f.label = torrent.getString(constants.getInt(constantTag("TORRENT", "LABEL")));
 				f.size = torrent.getLong(constants.getInt(constantTag("TORRENT", "SIZE")));
 				f.percent = (float)torrent.getInt(constants.getInt(constantTag("TORRENT", "PROGRESS")));
 				f.downloaded = torrent.getLong(constants.getInt(constantTag("TORRENT", "DOWNLOADED")));
@@ -229,6 +232,11 @@ public class uTorrent extends BaseTorrentHandler {
 	@Override
 	public void pause(TorrentFile which) {
 		standardAction(which, "pause");
+	}
+
+	@Override
+	public void resume(TorrentFile which) {
+		standardAction(which, "unpause");
 	}
 	
 	@Override

@@ -2,12 +2,18 @@ package torrenthandlers;
 
 import java.util.ArrayList;
 
+// File sizes and speed are in BYTES
+// Percent and ratio are floats
+// There is more information depending on type (ruTorrent)
+// but we don't need it for the app.
+
 public class BaseTorrentHandler {
 	public class TorrentFile {
 		public String hash;
 		public String name;
 		public String status;
 		public String savepath;
+		public String label;
 		public long size;
 		public float percent;
 		public long downloaded;
@@ -44,6 +50,7 @@ public class BaseTorrentHandler {
 	
 	public void start(TorrentFile which) {}
 	public void pause(TorrentFile which) {}
+	public void resume(TorrentFile which) {}
 	public void stop(TorrentFile which) {}
 	public void removeAndDelete(TorrentFile which) {}
 	public void remove(TorrentFile which) {}
