@@ -8,3 +8,5 @@ Dependencies
 OkHttp - https://github.com/square/okhttp
 
 Jsoup - http://jsoup.org/
+
+Redstone XML-RPC Library - http://xmlrpc.sourceforge.net
